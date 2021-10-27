@@ -1,0 +1,20 @@
+version: '3'
+services:
+  Apache:
+    image: httpd:latest
+    ports:
+      - "81:80"
+    volumes: 
+      - ./apache2/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./apache2/docs/:/usr/local/apache2/docs/
+
+    # restart: always
+    networks:
+      - "backend"
+# volumes:
+#   apache:
+
+networks:
+  backend:
+
